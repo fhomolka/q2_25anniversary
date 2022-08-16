@@ -602,6 +602,8 @@ extern void berserk_strike ( edict_t * self ) ;
 extern void berserk_attack_club ( edict_t * self ) ;
 extern void berserk_swing ( edict_t * self ) ;
 extern void berserk_attack_spike ( edict_t * self ) ;
+extern void berserk_attack_running_club (edict_t *self) ;
+extern void berserk_strike (edict_t *self) ;
 extern void berserk_run ( edict_t * self ) ;
 extern void berserk_walk ( edict_t * self ) ;
 extern void berserk_fidget ( edict_t * self ) ;

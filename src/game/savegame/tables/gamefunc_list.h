@@ -602,6 +602,8 @@
 {"berserk_attack_club", (byte *)berserk_attack_club},
 {"berserk_swing", (byte *)berserk_swing},
 {"berserk_attack_spike", (byte *)berserk_attack_spike},
+{"berserk_attack_running_club", (byte *)berserk_attack_running_club},
+{"berserk_strike", (byte *)berserk_strike},
 {"berserk_run", (byte *)berserk_run},
 {"berserk_walk", (byte *)berserk_walk},
 {"berserk_fidget", (byte *)berserk_fidget},
