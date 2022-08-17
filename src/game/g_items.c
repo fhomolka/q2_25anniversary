@@ -695,6 +695,16 @@ Add_Ammo(edict_t *ent, gitem_t *item, int count)
 
 	index = ITEM_INDEX(item);
 
+	//HACK(Fix):
+	/* So, the game expects 1 ammo item per type.
+	 * And this is not my best code, 
+	 * but we can hardcode aliases
+	 * and that's what I'm doing here
+	 */
+
+	//42 is ammo_nuke, 20 is ammo_cells
+	if (index == 42) {index = 20;}
+
 	if (ent->client->pers.inventory[index] == max)
 	{
 		return false;
@@ -2579,6 +2589,28 @@ static const gitem_t gameitemlist[] = {
 		NULL,
 		0,
 		"items/s_health.wav items/n_health.wav items/l_health.wav items/m_health.wav"
+	},
+
+	/* QUAKED ammo_nuke (.3 .3 1) (-16 -16 -16) (16 16 16) */
+	{
+		"ammo_nuke",
+		Pickup_Ammo,
+		NULL,
+		Drop_Ammo,
+		NULL,
+		"world/xianbeats.wav", //NOTE(Fix): Quakeulf really wanted this sound.
+		"models/items/ammo/nuke/tris.md2", 0,
+		NULL,
+		"a_cells", //icon
+		"Megacell", //name
+		3,
+		200,
+		NULL,
+		IT_AMMO,
+		0,
+		NULL,
+		AMMO_CELLS,
+		""
 	},
 
 	/* end of list marker */
