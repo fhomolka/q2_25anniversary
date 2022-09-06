@@ -60,6 +60,12 @@
 #define SPAWNFLAG_NOT_DEATHMATCH 0x00000800
 #define SPAWNFLAG_NOT_COOP 0x00001000
 
+// Q2 25
+
+#define SPAWNFLAG_INCREMENT_SKILL_STAGE 1
+
+// End Q2 25
+
 #define FL_FLY 0x00000001
 #define FL_SWIM 0x00000002 /* implied immunity to drowining */
 #define FL_IMMUNE_LASER 0x00000004
