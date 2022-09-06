@@ -248,6 +248,12 @@ InitGame(void)
 	g_fix_triggered = gi.cvar ("g_fix_triggered", "0", 0);
 	g_commanderbody_nogod = gi.cvar("g_commanderbody_nogod", "0", CVAR_ARCHIVE);
 
+	//Q25
+	
+	skill_stage = gi.cvar("skill_stage", "0", CVAR_LATCH);
+
+	// end of Q25
+
 	/* change anytime vars */
 	dmflags = gi.cvar("dmflags", "0", CVAR_SERVERINFO);
 	fraglimit = gi.cvar("fraglimit", "0", CVAR_SERVERINFO);

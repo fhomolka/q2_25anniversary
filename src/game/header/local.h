@@ -524,6 +524,10 @@ extern cvar_t *g_footsteps;
 extern cvar_t *g_fix_triggered;
 extern cvar_t *g_commanderbody_nogod;
 
+// Q25
+extern cvar_t *skill_stage;
+// End of Q25
+
 extern cvar_t *filterban;
 
 extern cvar_t *sv_gravity;
@@ -988,6 +992,11 @@ struct edict_s
 	char *message;
 	char *classname;
 	int spawnflags;
+	
+	// Q2 25
+	int skill_stage;
+	int skill_stage_stop;
+	// End Q2 25
 
 	float timestamp;
 
@@ -1092,6 +1101,7 @@ struct edict_s
 	/* common data blocks */
 	moveinfo_t moveinfo;
 	monsterinfo_t monsterinfo;
+
 };
 
 #endif /* GAME_LOCAL_H */

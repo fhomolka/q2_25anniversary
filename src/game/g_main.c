@@ -58,6 +58,12 @@ cvar_t *g_footsteps;
 cvar_t *g_fix_triggered;
 cvar_t *g_commanderbody_nogod;
 
+// Q25_Unit Additions
+
+cvar_t *skill_stage;
+
+// End of Q25 Unit Additions
+
 cvar_t *filterban;
 
 cvar_t *sv_maxvelocity;
