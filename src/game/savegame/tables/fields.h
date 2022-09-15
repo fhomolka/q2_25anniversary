@@ -105,4 +105,6 @@
 {"minpitch", STOFS(minpitch), F_FLOAT, FFL_SPAWNTEMP},
 {"maxpitch", STOFS(maxpitch), F_FLOAT, FFL_SPAWNTEMP},
 {"nextmap", STOFS(nextmap), F_LSTRING, FFL_SPAWNTEMP},
+{"skill_stage", FOFS(skill_stage), F_INT},
+{"skill_stage_stop", FOFS(skill_stage_stop), F_INT},
 {0, 0, 0, 0}

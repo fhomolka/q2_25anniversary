@@ -433,6 +433,19 @@ use_target_changelevel(edict_t *self, edict_t *other, edict_t *activator)
 		}
 	}
 
+	// Q2 25
+	// NOTE(Fix)
+	/* target_changelevel can increment the skill_stage
+	*  default is off, if you want this on, turn on spawnflag 1
+	*/
+	if(self->spawnflags & SPAWNFLAG_INCREMENT_SKILL_STAGE)
+	{
+		//NOTE(Fix): If we use cvar_set, that tries to change it as if the user
+		// 			 entered it via console. We have to make sure this increments.
+		gi.cvar_forceset("skill_stage", va("%d", (int)skill_stage->value + 1));
+	}
+	// End Q2 25
+
 	/* if noexit, do a ton of damage to other */
 	if (deathmatch->value && !((int)dmflags->value & DF_ALLOW_EXIT) &&
 		(other != world))
