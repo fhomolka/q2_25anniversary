@@ -496,6 +496,14 @@ Weapon_Generic(edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST,
 		return;
 	}
 
+	//TODO(fhomolka): Bitflags?
+	const char* current_weapon_classname = ent->client->pers.weapon->classname;
+	qboolean is_ssg = (0 == strcmp(current_weapon_classname, "weapon_supershotgun"));
+	qboolean is_mg = (0 == strcmp(current_weapon_classname, "weapon_machinegun"));
+	qboolean is_chaingun = (0 == strcmp(current_weapon_classname, "weapon_chaingun"));
+	qboolean is_rocket = (0 == strcmp(current_weapon_classname, "weapon_rocketlauncher"));
+	qboolean is_hyper = (0 == strcmp(current_weapon_classname, "weapon_hyperblaster"));
+
 	if (ent->client->weaponstate == WEAPON_DROPPING)
 	{
 		if (ent->client->ps.gunframe >= FRAME_DEACTIVATE_LAST)
@@ -518,8 +526,13 @@ Weapon_Generic(edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST,
 				ent->client->anim_end = FRAME_pain301;
 			}
 		}
-
+	
 		ent->client->ps.gunframe += 2;
+		//HACK(fhomolka): Edge-cases for specific weapons, until we think of a neater solution
+		if (is_ssg && ent->client->ps.gunframe > 61) ent->client->ps.gunframe = 61;
+		if (is_mg && ent->client->ps.gunframe > 49) ent->client->ps.gunframe = 49;
+		if (is_rocket && ent->client->ps.gunframe > 54) ent->client->ps.gunframe = 54;
+		if (is_hyper && ent->client->ps.gunframe > 53) ent->client->ps.gunframe = 53;
 		return;
 	}
 
@@ -536,9 +549,6 @@ Weapon_Generic(edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST,
 		return;
 	}
 
-	const char* current_weapon_classname = ent->client->pers.weapon->classname;
-	qboolean is_chaingun = (0 == strcmp(current_weapon_classname, "weapon_chaingun"));
-	qboolean is_hyper = (0 == strcmp(current_weapon_classname, "weapon_hyperblaster"));
 	qboolean can_change_while_firing = !((is_chaingun || is_hyper) && (ent->client->weaponstate == WEAPON_FIRING));
 	if ((ent->client->newweapon) && can_change_while_firing)
 	{
